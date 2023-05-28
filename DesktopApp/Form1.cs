@@ -16,7 +16,7 @@ namespace DesktopApp
     public partial class Form1 : Form
     {
 
-        DateTime selectedDay;
+        DateTime selectedDay, datePass;
         String monthname;
         int month;
         int year;
@@ -97,6 +97,9 @@ namespace DesktopApp
                 UserControlDays ucdays = new UserControlDays();
                 ucdays.days(i);
                 daycontainer.Controls.Add(ucdays);
+                datePass = new DateTime(year, month, i);
+                ucdays.getDate(datePass);
+                ucdays.updateSelf();
             }
         }
 
@@ -104,8 +107,6 @@ namespace DesktopApp
         {
             //clear container
             daycontainer.Controls.Clear();
-            
-            DateTime datePass;
 
             //increment previous month//
             month--;
@@ -143,6 +144,7 @@ namespace DesktopApp
                 daycontainer.Controls.Add(ucdays);
                 datePass = new DateTime(year, month, i);
                 ucdays.getDate(datePass);
+                ucdays.updateSelf();
             }
         }
 
@@ -157,9 +159,7 @@ namespace DesktopApp
         }
 
         private void displaDays()
-
         {
-            DateTime datePass;
 
             DateTime now = DateTime.Now;
 
@@ -196,19 +196,53 @@ namespace DesktopApp
                 ucdays.getDate(datePass);
                 ucdays.updateSelf();
             }
-            Console.WriteLine($"Month: {0}", month);
+            //Console.WriteLine($"Month: {0}", month);
         }
 
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
             EventForm addEForm = new EventForm();
             addEForm.ShowDialog();
+            updateCalendar();
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             TaskForm addTForm = new TaskForm();
             addTForm.ShowDialog();
+            updateCalendar();
+        }
+
+        private void btnRefreshCalendar_Click(object sender, EventArgs e)
+        {
+            updateCalendar();
+        }
+
+        public void updateCalendar()
+        {
+            daycontainer.Controls.Clear();
+
+            DateTime startofthemonth = new DateTime(year, month, 1);
+
+            int days = DateTime.DaysInMonth(year, month);
+
+            int dayoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d")) + 1;
+
+            for (int i = 1; i < dayoftheweek; i++)
+            {
+                UserControlBlank ucblank = new UserControlBlank();
+                daycontainer.Controls.Add(ucblank);
+            }
+            
+            for (int i = 1; i <= days; i++)
+            {
+                UserControlDays ucdays = new UserControlDays();
+                ucdays.days(i);
+                daycontainer.Controls.Add(ucdays);
+                datePass = new DateTime(year, month, i);
+                ucdays.getDate(datePass);
+                ucdays.updateSelf();
+            }
         }
     }
 }

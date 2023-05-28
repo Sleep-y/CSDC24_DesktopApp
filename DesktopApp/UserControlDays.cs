@@ -59,7 +59,7 @@ namespace DesktopApp
         {
             sqlConnect();
             conn.Open();
-            string cmd = String.Format("SELECT markName FROM MARKS INNER JOIN TASKS ON Marks.markID = Tasks.markID " +
+            string cmd = String.Format("SELECT taskName FROM TASKS " +
                 $"WHERE taskDate = '{ucDate.Date.ToShortDateString()}'");
             dbCmd = conn.CreateCommand();
             dbCmd.CommandText = cmd;

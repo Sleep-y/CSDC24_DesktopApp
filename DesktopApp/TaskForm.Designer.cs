@@ -84,7 +84,6 @@
             // 
             // cmbTaskFreq
             // 
-            this.cmbTaskFreq.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.fREQUENCIESBindingSource, "freqID", true));
             this.cmbTaskFreq.DataSource = this.fREQUENCIESBindingSource;
             this.cmbTaskFreq.DisplayMember = "freqName";
             this.cmbTaskFreq.FormattingEnabled = true;

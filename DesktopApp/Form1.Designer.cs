@@ -44,6 +44,8 @@
             this.btnAddEvent = new System.Windows.Forms.Button();
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
+            this.btnRefreshCalendar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnnxt
@@ -218,12 +220,35 @@
             this.btnAddSchedule.Text = "Add Schedule";
             this.btnAddSchedule.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshCalendar
+            // 
+            this.btnRefreshCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshCalendar.Location = new System.Drawing.Point(491, 1017);
+            this.btnRefreshCalendar.Name = "btnRefreshCalendar";
+            this.btnRefreshCalendar.Size = new System.Drawing.Size(155, 36);
+            this.btnRefreshCalendar.TabIndex = 16;
+            this.btnRefreshCalendar.Text = "Refresh Calendar";
+            this.btnRefreshCalendar.UseVisualStyleBackColor = true;
+            this.btnRefreshCalendar.Click += new System.EventHandler(this.btnRefreshCalendar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(287, 316);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 36);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Manage Tasks";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1780, 1091);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRefreshCalendar);
             this.Controls.Add(this.btnAddSchedule);
             this.Controls.Add(this.btnAddTask);
             this.Controls.Add(this.btnAddEvent);
@@ -271,6 +296,8 @@
         private System.Windows.Forms.Button btnAddEvent;
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnAddSchedule;
+        private System.Windows.Forms.Button btnRefreshCalendar;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -34,18 +34,13 @@ namespace DesktopApp
         {
             sqlConnect();
             conn.Open();
-            string cmd = String.Format($"INSERT INTO MARKS (markName, freqID) VALUES ({txtTaskName.Text}, {Int64.Parse(cmbTaskFreq.Text)});" +
-                $"INSERT INTO TASKS (taskDate, taskIsDone) VALUES ({dtTaskDate.Text})");
+            string cmd = String.Format($"INSERT INTO TASKS (taskName, taskDate, taskIsDone, freqID) VALUES " +
+                $"('{txtTaskName.Text}', '{DateTime.Parse(dtTaskDate.Text).ToShortDateString()}', 0, {cmbTaskFreq.SelectedValue})");
             dbCmd = conn.CreateCommand();
             dbCmd.CommandText = cmd;
             dbCmd.ExecuteNonQuery();
-
-            while (dbReader.Read())
-            {
-                //Console.WriteLine(dbReader.GetValue(0).ToString());
-            }
-
             conn.Close();
+            MessageBox.Show("Added Task. Please make sure to refresh the Calendar.");
         }
 
         private void TaskForm_Load(object sender, EventArgs e)
