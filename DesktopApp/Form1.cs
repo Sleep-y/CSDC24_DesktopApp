@@ -13,7 +13,14 @@ namespace DesktopApp
 {
     public partial class Form1 : Form
     {
-        int month, year;
+
+        DateTime selectedDay;
+
+        String monthname;
+
+        int month;
+        int year;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,12 +36,18 @@ namespace DesktopApp
             //clear container
             daycontainer.Controls.Clear();
 
-            String monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
-            LBDATE.Text = monthname + " " + year;
-
             //increment next month//
             month++;
-          
+
+            if (month >= 13)
+            {
+                year += 1;
+                month = 1;
+            }
+
+            monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+            LBDATE.Text = monthname + " " + year;
+
             //get the first da of the month//
 
             DateTime startofthemonth = new DateTime(year, month, 1);
@@ -44,6 +57,7 @@ namespace DesktopApp
 
             //convert the startofthemonth to int//
             int dayoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d")) + 1;
+
 
             //created black usercontol//
             for (int i = 1; i < dayoftheweek; i++)
@@ -64,12 +78,20 @@ namespace DesktopApp
         {
             //clear container
             daycontainer.Controls.Clear();
-
-            String monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
-            LBDATE.Text = monthname + " " + year;
+            
+            DateTime datePass;
 
             //increment previous month//
             month--;
+
+            if (month <= 0)
+            {
+                year -= 1;
+                month = 12;
+            }
+
+            monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+            LBDATE.Text = monthname + " " + year;
 
             //get the first da of the month//
 
@@ -93,18 +115,34 @@ namespace DesktopApp
                 UserControlDays ucdays = new UserControlDays();
                 ucdays.days(i);
                 daycontainer.Controls.Add(ucdays);
+                datePass = new DateTime(year, month, i);
+                ucdays.getDate(datePass);
             }
+        }
+
+        private void daycontainer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void getSelected(DateTime date)
+        {
+            selectedDay = date;
         }
 
         private void displaDays()
 
         {
+            DateTime datePass;
+
             DateTime now = DateTime.Now;
+
             month = now.Month;
             year = now.Year;
 
-            String monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+            monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             LBDATE.Text = monthname + " " + year;
+            dtSelectedDate.Text = String.Format("{0:yyyy}/{0:MM}/{0:dd}", now);
 
             //get the first da of the month//
 
@@ -128,7 +166,10 @@ namespace DesktopApp
                 UserControlDays ucdays = new UserControlDays();
                 ucdays.days(i);
                 daycontainer.Controls.Add(ucdays);
+                datePass = new DateTime(year, month, i);
+                ucdays.getDate(datePass);
             }
+            Console.WriteLine($"Month: {0}", month);
         }
     }
 }
