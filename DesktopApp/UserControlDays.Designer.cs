@@ -48,6 +48,8 @@
             // 
             // ucDayList
             // 
+            this.ucDayList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ucDayList.Enabled = false;
             this.ucDayList.HideSelection = false;
             this.ucDayList.Location = new System.Drawing.Point(4, 54);
             this.ucDayList.Name = "ucDayList";
@@ -66,8 +68,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(170, 154);
-            this.Load += new System.EventHandler(this.UserControlDays_Load);
             this.Click += new System.EventHandler(this.UserControlDays_Click);
+            this.DoubleClick += new System.EventHandler(this.UserControlDays_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

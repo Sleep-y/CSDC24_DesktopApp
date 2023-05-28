@@ -41,6 +41,9 @@
             this.LBDATE = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dtSelectedDate = new System.Windows.Forms.DateTimePicker();
+            this.btnAddEvent = new System.Windows.Forms.Button();
+            this.btnAddTask = new System.Windows.Forms.Button();
+            this.btnAddSchedule = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnnxt
@@ -174,7 +177,7 @@
             // 
             // dtSelectedDate
             // 
-            this.dtSelectedDate.CustomFormat = "yyyy/MM/dd";
+            this.dtSelectedDate.CustomFormat = "MM/dd/yyyy";
             this.dtSelectedDate.Enabled = false;
             this.dtSelectedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtSelectedDate.Location = new System.Drawing.Point(491, 28);
@@ -183,12 +186,47 @@
             this.dtSelectedDate.TabIndex = 12;
             this.dtSelectedDate.TabStop = false;
             // 
+            // btnAddEvent
+            // 
+            this.btnAddEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEvent.Location = new System.Drawing.Point(287, 137);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(155, 36);
+            this.btnAddEvent.TabIndex = 13;
+            this.btnAddEvent.Text = "Add Event";
+            this.btnAddEvent.UseVisualStyleBackColor = true;
+            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
+            // 
+            // btnAddTask
+            // 
+            this.btnAddTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTask.Location = new System.Drawing.Point(287, 179);
+            this.btnAddTask.Name = "btnAddTask";
+            this.btnAddTask.Size = new System.Drawing.Size(155, 36);
+            this.btnAddTask.TabIndex = 14;
+            this.btnAddTask.Text = "Add Task";
+            this.btnAddTask.UseVisualStyleBackColor = true;
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
+            // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.Location = new System.Drawing.Point(287, 221);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(155, 36);
+            this.btnAddSchedule.TabIndex = 15;
+            this.btnAddSchedule.Text = "Add Schedule";
+            this.btnAddSchedule.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1780, 1091);
+            this.Controls.Add(this.btnAddSchedule);
+            this.Controls.Add(this.btnAddTask);
+            this.Controls.Add(this.btnAddEvent);
             this.Controls.Add(this.dtSelectedDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.LBDATE);
@@ -230,6 +268,9 @@
         private System.Windows.Forms.Label LBDATE;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.DateTimePicker dtSelectedDate;
+        private System.Windows.Forms.Button btnAddEvent;
+        private System.Windows.Forms.Button btnAddTask;
+        private System.Windows.Forms.Button btnAddSchedule;
     }
 }
 

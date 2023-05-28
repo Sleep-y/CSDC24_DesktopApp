@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,20 @@ namespace DesktopApp
 
         DateTime ucDate;
 
+        String dbConn = "Data Source=DESKTOP-KS5N5OK;Initial Catalog = TownCrierDB; Integrated Security = True";
+        SqlConnection conn;
+        SqlDataReader dbReader;
+        SqlCommand dbCmd;
+        SqlDataAdapter dbAdapter;
+
+        private void sqlConnect()
+        {
+            conn = new SqlConnection(dbConn);
+        }
+
         public UserControlDays()
         {
             InitializeComponent();
-        }
-
-        private void UserControlDays_Load(object sender, EventArgs e)
-        {
-
         }
 
         public void getDate(DateTime date) 
@@ -48,14 +55,28 @@ namespace DesktopApp
             ucPassDate();
         }
 
-        private void ucDayList_SelectedIndexChanged(object sender, EventArgs e)
+        public void updateSelf()
         {
-            ucPassDate();
+            sqlConnect();
+            conn.Open();
+            string cmd = String.Format("SELECT markName FROM MARKS INNER JOIN TASKS ON Marks.markID = Tasks.markID " +
+                $"WHERE taskDate = '{ucDate.Date.ToShortDateString()}'");
+            dbCmd = conn.CreateCommand();
+            dbCmd.CommandText = cmd;
+            dbReader = dbCmd.ExecuteReader();
+
+            while (dbReader.Read())
+            {
+                ucDayList.Items.Add(dbReader.GetValue(0).ToString());
+                //Console.WriteLine(dbReader.GetValue(0).ToString());
+            }
+
+            conn.Close();
         }
 
-        private void ucDayList_Click(object sender, EventArgs e)
+        private void UserControlDays_DoubleClick(object sender, EventArgs e)
         {
-            ucPassDate();
+
         }
     }
 }

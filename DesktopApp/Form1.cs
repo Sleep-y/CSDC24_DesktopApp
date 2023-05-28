@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -15,15 +17,39 @@ namespace DesktopApp
     {
 
         DateTime selectedDay;
-
         String monthname;
-
         int month;
         int year;
+
+        String dbConn = "Data Source=DESKTOP-KS5N5OK;Initial Catalog = TownCrierDB; Integrated Security = True";
+        SqlConnection conn;
+        SqlDataReader dbReader;
+        SqlCommand dbCmd;
+        SqlDataAdapter dbAdapter;
+
+        private void sqlConnect()
+        {
+            conn = new SqlConnection(dbConn);
+        }
 
         public Form1()
         {
             InitializeComponent();
+
+            /*
+            conn = new SqlConnection(dbConn);
+
+            try 
+            { 
+                conn.Open(); 
+                Console.WriteLine("Connected to Database");  
+            } 
+            catch 
+            { 
+                Console.WriteLine("Error Connecting to Database");
+                conn.Close();
+            }
+            */
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -168,8 +194,21 @@ namespace DesktopApp
                 daycontainer.Controls.Add(ucdays);
                 datePass = new DateTime(year, month, i);
                 ucdays.getDate(datePass);
+                ucdays.updateSelf();
             }
             Console.WriteLine($"Month: {0}", month);
+        }
+
+        private void btnAddEvent_Click(object sender, EventArgs e)
+        {
+            EventForm addEForm = new EventForm();
+            addEForm.ShowDialog();
+        }
+
+        private void btnAddTask_Click(object sender, EventArgs e)
+        {
+            TaskForm addTForm = new TaskForm();
+            addTForm.ShowDialog();
         }
     }
 }
