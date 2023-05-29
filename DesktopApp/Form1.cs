@@ -218,6 +218,14 @@ namespace DesktopApp
             updateCalendar();
         }
 
+        private void btnManageTask_Click(object sender, EventArgs e)
+        {
+            ManageTaskForm manTForm = new ManageTaskForm();
+            manTForm.getDate(DateTime.Parse(dtSelectedDate.Text));
+            manTForm.ShowDialog();
+            updateCalendar();
+        }
+
         public void updateCalendar()
         {
             daycontainer.Controls.Clear();

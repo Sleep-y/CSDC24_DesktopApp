@@ -45,7 +45,8 @@
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.btnRefreshCalendar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnManageTask = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnnxt
@@ -182,7 +183,7 @@
             this.dtSelectedDate.CustomFormat = "MM/dd/yyyy";
             this.dtSelectedDate.Enabled = false;
             this.dtSelectedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtSelectedDate.Location = new System.Drawing.Point(491, 28);
+            this.dtSelectedDate.Location = new System.Drawing.Point(633, 29);
             this.dtSelectedDate.Name = "dtSelectedDate";
             this.dtSelectedDate.Size = new System.Drawing.Size(200, 26);
             this.dtSelectedDate.TabIndex = 12;
@@ -231,15 +232,26 @@
             this.btnRefreshCalendar.UseVisualStyleBackColor = true;
             this.btnRefreshCalendar.Click += new System.EventHandler(this.btnRefreshCalendar_Click);
             // 
-            // button1
+            // btnManageTask
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(287, 316);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 36);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Manage Tasks";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnManageTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageTask.Location = new System.Drawing.Point(287, 316);
+            this.btnManageTask.Name = "btnManageTask";
+            this.btnManageTask.Size = new System.Drawing.Size(155, 36);
+            this.btnManageTask.TabIndex = 17;
+            this.btnManageTask.Text = "Manage Tasks";
+            this.btnManageTask.UseVisualStyleBackColor = true;
+            this.btnManageTask.Click += new System.EventHandler(this.btnManageTask_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(486, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(141, 25);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Selected Date:";
             // 
             // Form1
             // 
@@ -247,7 +259,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1780, 1091);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnManageTask);
             this.Controls.Add(this.btnRefreshCalendar);
             this.Controls.Add(this.btnAddSchedule);
             this.Controls.Add(this.btnAddTask);
@@ -297,7 +310,8 @@
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.Button btnRefreshCalendar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManageTask;
+        private System.Windows.Forms.Label label9;
     }
 }
 
